@@ -264,7 +264,6 @@ class Playback extends React.PureComponent {
       title = (<div>{this.props.title}</div>);
     } else {
       title = (<div>Playback</div>);
-
     }
     if (this.state.date !== undefined) {
       playButton = (<Button buttonType='Icon' key='play' style={{'float': 'left'}} onTouchTap={this._playPause.bind(this)}>{buttonIcon}</Button>);
@@ -305,8 +304,8 @@ class Playback extends React.PureComponent {
     return (
       <div className={classNames('sdk-component playback', this.props.className)} style={style}>
         {title}
-        {slider}
         {datePicker}
+        {slider}
         {playButton}
       </div>
     );
