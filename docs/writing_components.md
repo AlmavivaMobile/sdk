@@ -195,7 +195,7 @@ In this exercise we will be creating a new component that will show the area of 
   <div className='row container'>
     <Toolbar><DrawBox strokeColor='#0000FF' map={map} /></Toolbar>
     <MapPanel id='map' map={map} />
-    <div><LayerList collapsible={false} map={map} /></div>
+    <div><LayerList id='layer-list' collapsible={false} map={map} /></div>
     <div id='zoom-buttons'><Zoom map={map} /></div>
   </div>
 ```
