@@ -171,7 +171,7 @@ class WFSService {
       startIndex: startIndex,
       maxFeatures: maxFeatures,
       version: '1.1.0',
-      typename: wfsInfo.featureType,
+      typename: wfsInfo.featurePrefix + ":" wfsInfo.featureType,
       srsname: 'EPSG:4326'
     };
     if (sortingInfo.length === 1) {
@@ -202,7 +202,7 @@ class WFSService {
         request: 'GetFeature',
         resultType: 'hits',
         version: '1.1.0',
-        typename: wfsInfo.featureType
+        typename: wfsInfo.featurePrefix + ":" wfsInfo.featureType
       });
       util.doGET(util.getProxiedUrl(urlObj.toString(), opt_proxy), function(xmlhttp) {
         var info = wfsFormat.readFeatureCollectionMetadata(xmlhttp.responseXML);
@@ -219,7 +219,7 @@ class WFSService {
       request: 'GetFeature',
       version : '1.1.0',
       srsName: srs,
-      typename: wfsInfo.featureType,
+      typename: wfsInfo.featurePrefix + ":" wfsInfo.featureType,
       bbox: extent.join(',') + ',' + srs
     });
     return util.doGET(util.getProxiedUrl(url.toString(), opt_proxy), function(xmlhttp) {
@@ -236,7 +236,7 @@ class WFSService {
       request: 'GetFeature',
       version : '1.1.0',
       srsName: view.getProjection().getCode(),
-      typename: wfsInfo.featureType,
+      typename: wfsInfo.featurePrefix + ":" wfsInfo.featureType,
       cql_filter: 'DWITHIN(' + wfsInfo.geometryName + ', Point(' + point[1] + ' ' + point[0] + '), 0.1, meters)'
     });
     return url.toString();
